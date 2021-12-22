@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        position: relative;
+        margin: 0;
+        background-color: crimson;
+    }
+    
+    .clock {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin: 30px auto 0;
+        border: 10px solid #fff;
+        border-radius: 50%;
+    }
+    
+    .clock::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #000;
+    }
+    
+    .t,
+    .s,
+    .m {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    
+    .t .t_needle {
+        display: inline-block;
+        width: 6px;
+        height: 50%;
+        background-image: linear-gradient(crimson 40%, white 60%);
+    }
+    
+    .m .m_needle {
+        display: inline-block;
+        width: 4px;
+        height: 50%;
+        background-image: linear-gradient(crimson 20%, black 40%);
+    }
+    
+    .s .s_needle {
+        display: inline-block;
+        width: 2px;
+        height: 50%;
+        background-image: linear-gradient(crimson 3%, black 23%);
+    }
+    
+    .m {
+        transform: rotate(60deg);
+    }
+    
+    .t {
+        transform: rotate(90deg);
+    }
+</style>
+
+<body>
+    <div class="clock">
+        <div class="t">
+            <div class="t_needle"></div>
+        </div>
+        <div class="m">
+            <div class="m_needle"></div>
+        </div>
+        <div class="s">
+            <div class="s_needle"></div>
+        </div>
+    </div>
+
+    <script>
+        function rot() {
+            const time = new Date();
+
+            const tDeg = time.getHours() * (360 / 12);
+            const mDeg = time.getMinutes() * (360 / 60);
+            const sDeg = time.getSeconds() * (360 / 60);
+
+            const tN = document.querySelector('.t');
+            const mN = document.querySelector('.m');
+            const sN = document.querySelector('.s');
+
+
+            tN.style.transform = `rotate(${tDeg}deg)`;
+            mN.style.transform = `rotate(${mDeg}deg)`;
+            sN.style.transform = `rotate(${sDeg}deg)`;
+
+
+        }
+
+
+        rot()
+        setInterval(() => {
+            rot()
+        }, 1000)
+    </script>
+</body>
+
+</html>

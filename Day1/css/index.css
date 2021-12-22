@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+.containaer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.key {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+    background-color: #999999;
+    border: 3px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.key.active {
+    border: #ffc600 3px solid;
+    box-shadow: 0 0 10px #ffc600;
+}
+
+.key :nth-child(1) {
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 0 3px #000;
+}
+
+.key .des {
+    color: #ffc600;
+    text-shadow: 2px 0 3px #000;
+}

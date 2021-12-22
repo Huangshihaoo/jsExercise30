@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     :root {
+        --border: 10px;
+        --blur: 1px;
+        --color: #000;
+    }
+    
+    .image {
+        position: relative;
+        font-size: 0px;
+    }
+    
+    .image img {
+        /* display: block; */
+        vertical-align: middle;
+        width: 300px;
+        border: var(--border) solid var(--color);
+        filter: blur(var(--blur));
+    }
+</style>
+
+<body>
+    Update CSS Variables with JS
+
+    <div class="control">
+        <div class="wrap">
+            <label for="border">border</label> <input name="border" type="range" value="10" max="200">
+        </div>
+        <div class="wrap">
+            <label for="blur">blur</label> <input name="blur" type="range" value="1" max="10">
+        </div>
+        <div class="wrap">
+            <label for="color">color</label> <input name="color" type="color">
+        </div>
+    </div>
+
+    <div class="image">
+        <img src="./img/5db6b99aeaac5.jpg" alt="">
+    </div>
+
+
+    <script>
+        // const margin = document.querySelector('input[name="margin"]');
+        // const blur = document.querySelector('input[name="blur"]');
+        const inputs = document.querySelectorAll('input[type="range"]');
+        const color = document.querySelector('input[name="color"]');
+
+        inputs.forEach(item => {
+            item.addEventListener('mousemove', function() {
+                if (this.name === 'border') {
+                    document.documentElement.style.setProperty('--border', this.value + 'px')
+                } else {
+                    document.documentElement.style.setProperty('--blur', this.value + 'px')
+
+                }
+            })
+        })
+
+        color.addEventListener('change', function() {
+            document.documentElement.style.setProperty('--color', this.value)
+
+        })
+    </script>
+
+</body>
+
+</html>
